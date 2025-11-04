@@ -1,0 +1,9 @@
+# Ignorar o ambiente virtual
+DadosFutebol/
+
+# Ignorar arquivo com chaves
+.env
+
+# Arquivos Python
+__pycache__/
+*.pyc

@@ -1,0 +1,93 @@
+<!-- standings.html - Classificação da competição -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Classificação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f3f3;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #0003;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-bottom: 15px;
+        }
+
+        .btn:hover {
+            background: #0056c1;
+        }
+
+        .error {
+            background: #ffdddd;
+            color: #a00;
+            padding: 12px;
+            border-left: 4px solid red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Botão voltar mantendo liga + data -->
+    <a class="btn" href="/?league={{ selected_league }}&date={{ selected_date }}">
+        ← Voltar
+    </a>
+
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+
+    {% if standings %}
+        <h1>Classificação - {{ league_name }}</h1>
+
+        <table>
+            <tr>
+                <th>Pos</th><th>Time</th><th>Pontos</th><th>Jogos</th>
+            </tr>
+
+            {% for row in standings %}
+                <tr>
+                    <td>{{ row["position"] }}</td>
+                    <td>{{ row["team"]["name"] }}</td>
+                    <td>{{ row["points"] }}</td>
+                    <td>{{ row["playedGames"] }}</td>
+                </tr>
+            {% endfor %}
+
+        </table>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

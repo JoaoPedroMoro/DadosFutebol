@@ -1,0 +1,6 @@
+{% comment %} <select class="form-select" name="league">
+                <option value="">Todas</option>
+                {% for code, name in ligas.items() %}
+                <option value="{{code}}" {% if selected == code %}selected{% endif %}>{{name}}</option>
+                {% endfor %}
+            </select> {% endcomment %}
