@@ -45,7 +45,7 @@ ligas = {
 def index():
     # Pega os filtros enviados pelo usuário
     selected = request.args.get("league")  # liga selecionada
-    data_selecionada = request.args.get("date") or datetime.now().strftime("%Y-%m-%d")  # data selecionada ou hoje
+    data_selecionada = request.args.get("date") or datetime.now(LOCAL_ZONE).strftime("%Y-%m-%d")  # data selecionada ou hoje
     matches = []  # lista que vai receber todos os jogos
 
     # Define quais ligas buscar: se o usuário escolheu, só essa; senão, todas
